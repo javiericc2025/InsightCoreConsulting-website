@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Catalog - InsightCore Consulting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            corePlugins: {
+                preflight: false,
+            },
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#E6F6FC',
+                            100: '#C1E8F9',
+                            500: '#3BAFE6',
+                            600: '#099EE1', // Primary Color
+                            700: '#077BB5', // Primary Darker
+                            800: '#2C4A60', // Secondary Color
+                            900: '#1A2C3A', // Footer Color
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .test-card {
+            transition: all 0.3s ease;
+        }
+
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn.active {
+            background-color: #099EE1;
+            color: white;
+            border-color: #099EE1;
+        }
+
+        .checkbox-wrapper input:checked+div {
+            background-color: #E6F6FC;
+            border-color: #099EE1;
+        }
+
+        .checkbox-wrapper input:checked+div .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <img src="../assets/logo_v2.png" alt="InsightCore Consulting">
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="tests.html" class="active">Tests</a></li>
+                <li><a href="talento.html">Talent</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <a href="../tests.html">ES</a>
+                <span class="lang-divider">|</span>
+                <a href="tests.html" class="active">EN</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PsicoSmart Catalog Section -->
+    <section id="psicosmart-catalog" style="padding-top: 50px; padding-bottom: 50px; margin-top: 80px;">
+        <!-- Catalog Hero -->
+        <div class="bg-blue-700 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4" style="color: white !important;">Psychometric Test
+                    Catalog</h1>
+                <p class="text-white text-lg max-w-2xl mx-auto" style="color: white !important;">Select the psychometric
+                    tests required for your organization. Generate your quote instantly.</p>
+                <div class="mt-6 inline-block bg-blue-800 rounded-full px-6 py-2 border border-blue-500">
+                    <span class="font-semibold text-yellow-400">Single Price:</span> US$11.50 <span
+                        class="text-sm text-gray-300">(Tax included)</span> per test
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-2 justify-center mb-10" id="category-filters">
+                <button onclick="filterTests('all')"
+                    class="category-btn active border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-50 transition">
+                    All
+                </button>
+                <button onclick="filterTests('Intelligence')"
+                    class="category-btn border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-50 transition">
+                    Intelligence
+                </button>
+                <button onclick="filterTests('Personality')"
+                    class="category-btn border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-50 transition">
+                    Personality
+                </button>
+                <button onclick="filterTests('Sales')"
+                    class="category-btn border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-50 transition">
+                    Sales
+                </button>
+                <button onclick="filterTests('Leadership')"
+                    class="category-btn border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-50 transition">
+                    Leadership
+                </button>
+                <button onclick="filterTests('Values')"
+                    class="category-btn border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-50 transition">
+                    Values
+                </button>
+                <button onclick="filterTests('Behavior')"
+                    class="category-btn border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-50 transition">
+                    Behavior
+                </button>
+                <button onclick="filterTests('Cognitive Skills')"
+                    class="category-btn border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-50 transition">
+                    Cognitive
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="max-w-md mx-auto mb-8 relative">
+                <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+                <input type="text" id="search-input" onkeyup="searchTests()"
+                    placeholder="Search test (e.g. Terman, Cleaver...)"
+                    class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+            </div>
+
+            <!-- Grid Container -->
+            <div id="tests-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards will be injected here by JS -->
+            </div>
+
+        </div>
+
+        <!-- Order Summary Section -->
+        <div id="solicitud" class="bg-gray-100 border-t border-gray-200 py-12">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-blue-800 text-white px-6 py-4 flex justify-between items-center"
+                        style="background-color: var(--secondary-color);">
+                        <h2 class="text-xl font-bold" style="color: white !important; margin-bottom: 0;"><i
+                                class="fa-solid fa-file-invoice-dollar mr-2"></i>Order Summary</h2>
+                        <button onclick="clearCart()" class="text-sm"
+                            style="background-color: #099EE1; color: white !important; border: none; padding: 6px 16px; border-radius: 6px; cursor: pointer; text-decoration: none; font-weight: 500; transition: background-color 0.2s;">Clear
+                            All</button>
+                    </div>
+
+                    <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="font-semibold text-gray-700 mb-3">Selected Tests</h3>
+                            <div id="cart-items"
+                                class="h-64 overflow-y-auto border border-gray-100 rounded bg-gray-50 p-3 mb-4 space-y-2">
+                                <p class="text-gray-400 text-center italic mt-10">No tests selected yet.</p>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-gray-200 pt-4">
+                                <span class="text-lg font-bold text-gray-700">Total to Pay:</span>
+                                <span class="text-2xl font-bold text-blue-600" id="cart-total">US$0.00</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">* Prices include tax.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-700 mb-3">Contact Information</h3>
+                            <form id="order-form" onsubmit="sendOrder(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                                    <input type="text" id="client-name" name="name" required
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:border-blue-500 focus:ring-blue-500"
+                                        placeholder="Your name">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Company /
+                                        Organization</label>
+                                    <input type="text" id="client-company" required
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:border-blue-500 focus:ring-blue-500"
+                                        placeholder="Company name">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" id="client-email" name="email" required
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-2 focus:border-blue-500 focus:ring-blue-500"
+                                        placeholder="contact@company.com">
+                                </div>
+
+                                <textarea name="message" id="order-message" style="display:none"></textarea>
+
+                                <button type="submit" id="submit-btn" disabled
+                                    class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center">
+                                    <i class="fa-solid fa-paper-plane mr-2"></i> Submit Request
+                                </button>
+                                <div id="form-status"
+                                    class="hidden text-center p-3 rounded-lg text-sm font-medium mt-4"></div>
+                                <p class="text-xs text-gray-500 text-center mt-2">
+                                    Your request will be sent directly, and we will contact you shortly.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="index.html" class="footer-logo">InsightCore Consulting</a>
+                    <p>Your strategic partner in HR and business consulting.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Recruitment</a></li>
+                        <li><a href="services.html">Headhunting</a></li>
+                        <li><a href="services.html">Outsourcing</a></li>
+                        <li><a href="services.html">Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="talento.html">Talent</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@insightcoreconsulting.xyz"><i class="fas fa-envelope"
+                                    style="margin-right: 10px;"></i> info@insightcoreconsulting.xyz</a></li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +505 8490-9970</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Altos de Motastepe, 4th
+                            Stage, House No. 70, Managua, Nicaragua</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/insightcore-consulting-s-a/" target="_blank"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 InsightCore Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        const catalogData = [
+            // Intelligence
+            { id: 'terman', name: 'TERMAN', category: 'Intelligence', desc: 'Measures IQ, Information, Judgment, Vocabulary, Synthesis, Concentration, Analysis, Planning.' },
+            { id: 'raven', name: 'RAVEN', category: 'Intelligence', desc: 'Measures intellectual capacity and general mental ability (shapes and reasoning by analogies).' },
+            { id: 'dominos', name: 'DOMINÓS', category: 'Intelligence', desc: 'Measures the G factor of intelligence based on logical faculties.' },
+            { id: 'barsit', name: 'BÁRSIT', category: 'Intelligence', desc: 'General knowledge, vocabulary, verbal, logical, and numerical reasoning (Operational).' },
+
+            // Personality
+            { id: 'kostick', name: 'KOSTICK', category: 'Personality', desc: 'Leadership, lifestyle, social nature, job adaptation, emotional nature.' },
+            { id: '16facper', name: '16FACPER', category: 'Personality', desc: 'Intelligence, emotional stability, dominance, impulsivity, group loyalty, situational aptitude.' },
+            { id: 'gordon', name: 'GORDON', category: 'Personality', desc: 'Ascendance, responsibility, emotional stability, sociability, caution, originality.' },
+
+            // Sales
+            { id: 'ipv', name: 'IPV (Sales)', category: 'Sales', desc: 'Understanding, adaptability, self-control, frustration tolerance, combativeness.' },
+            { id: 'selleval', name: 'SELLEVAL', category: 'Sales', desc: 'Adaptability, closing, negotiation, listening, prospecting, and customer orientation.' },
+            { id: 'clienfocus', name: 'CLIENFOCUS', category: 'Sales', desc: 'Service orientation, empathy, proactivity, problem solving, and retention.' },
+            { id: 'negoval', name: 'NEGOVAL', category: 'Sales', desc: 'Preparation, strategy, rejection handling, closing deals, persuasion, and ethics.' },
+
+            // Leadership
+            { id: 'moss', name: 'MOSS', category: 'Leadership', desc: 'Supervision skill, decision-making capacity, problem evaluation, and tact.' },
+            { id: 'lideresia', name: 'LIDERESIA', category: 'Leadership', desc: 'Delegation, communication, empathy, decision making, conflict resolution.' },
+            { id: 'managerskill', name: 'MANAGERSKILL', category: 'Leadership', desc: 'Team management, emotional intelligence, strategic thinking, change management.' },
+
+            // Values
+            { id: 'zavic', name: 'ZAVIC', category: 'Values', desc: 'Morals, legality, indifference, corruption, and interests (economic, political, social).' },
+            { id: 'allport', name: 'ALLPORT', category: 'Values', desc: 'Theoretical, economic, aesthetic, social, political, and religious interests.' },
+            { id: 'honestivalues', name: 'HONESTIVALUES', category: 'Values', desc: 'Theft, bribery, loyalty, substance use, harassment, bullying, fraud, violence.' },
+
+            // Behavior
+            { id: 'cleaver', name: 'CLEAVER', category: 'Behavior', desc: 'DISC: Drive, Influence, Steadiness, and Compliance.' },
+            { id: 'lifo', name: 'LIFO', category: 'Behavior', desc: 'Work styles: Support, Control, Conservation, and Negotiation.' },
+            { id: 'conflire', name: 'CONFLIRE', category: 'Behavior', desc: 'Critical thinking, emotion management, diplomacy, and conflict resolution.' },
+            { id: 'efectico', name: 'EFECTICO', category: 'Behavior', desc: 'Assertive, digital, intercultural, non-verbal communication, and active listening.' },
+            { id: 'emotint', name: 'EMOTINT', category: 'Behavior', desc: 'Emotional intelligence: self-awareness, regulation, empathy, motivation.' },
+            { id: 'evalutime', name: 'EVALUTIME', category: 'Behavior', desc: 'Time management, meeting management, prioritization, and meeting deadlines.' },
+            { id: 'trabeq', name: 'TRABEQ', category: 'Behavior', desc: 'Teamwork: collaboration, trust, commitment, and mutual support.' },
+            { id: 'flexiadap', name: 'FLEXIADAP', category: 'Behavior', desc: 'Cognitive flexibility, change management, risk tolerance, and resilience.' },
+            { id: 'gestiso', name: 'GESTISO', category: 'Behavior', desc: 'Resource management: quality control, costs, risks, and financial planning.' },
+            { id: 'innovacre', name: 'INNOVACRE', category: 'Behavior', desc: 'Creativity and innovation: lateral thinking, curiosity, originality.' },
+            { id: 'talenma', name: 'TALENMA', category: 'Behavior', desc: 'Decision making, problem analysis, critical thinking.' },
+            { id: 'socialinte', name: 'SOCIALINTE', category: 'Behavior', desc: 'Social intelligence, adaptability, awareness of norms, and negotiation.' },
+            { id: 'stabilieval', name: 'STABILIEVAL', category: 'Behavior', desc: 'Labor stability, commitment, satisfaction, and permanence.' },
+
+            // Cognitive Skills
+            { id: '10fig', name: '10FIG', category: 'Cognitive Skills', desc: 'Information, judgment, vocabulary, synthesis, numerical ability, and abstraction.' }
+        ];
+
+        const PRICE_PER_TEST = 11.50;
+        let cart = new Map();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTests(catalogData);
+            updateCartUI();
+        });
+
+        function filterTests(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else {
+                const allButton = document.querySelector('.category-btn[onclick="filterTests(\'all\')"]');
+                if (allButton) allButton.classList.add('active');
+            }
+
+            if (category === 'all') {
+                renderTests(catalogData);
+            } else {
+                const filtered = catalogData.filter(item => item.category === category);
+                renderTests(filtered);
+            }
+        }
+
+        function searchTests() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filtered = catalogData.filter(item =>
+                item.name.toLowerCase().includes(query) ||
+                item.desc.toLowerCase().includes(query)
+            );
+            renderTests(filtered);
+        }
+
+        function renderTests(data) {
+            const grid = document.getElementById('tests-grid');
+            grid.innerHTML = '';
+
+            if (data.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center text-gray-500 py-10">No tests found matching your search.</div>';
+                return;
+            }
+
+            data.forEach(test => {
+                const quantity = cart.get(test.id) || 0;
+                const isSelected = quantity > 0;
+                const card = document.createElement('div');
+
+                card.className = `test-card bg-white rounded-lg shadow border border-gray-100 p-5 flex flex-col justify-between h-full transition-all duration-200 ${isSelected ? 'ring-2 ring-blue-500' : ''}`;
+                card.id = `card-${test.id}`;
+
+                let iconClass = 'fa-file-lines';
+                if (test.category === 'Intelligence') iconClass = 'fa-brain';
+                if (test.category === 'Personality') iconClass = 'fa-user-gear';
+                if (test.category === 'Sales') iconClass = 'fa-briefcase';
+                if (test.category === 'Leadership') iconClass = 'fa-chess-king';
+                if (test.category === 'Values') iconClass = 'fa-scale-balanced';
+                if (test.category === 'Behavior') iconClass = 'fa-users-viewfinder';
+                if (test.category === 'Cognitive Skills') iconClass = 'fa-lightbulb';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded uppercase tracking-wide">${test.category}</span>
+                            <i class="fa-solid ${iconClass} text-gray-300 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">${test.name}</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">${test.desc}</p>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                        <span class="font-bold text-gray-800">US$${PRICE_PER_TEST.toFixed(2)}</span>
+                        
+                        <div class="flex items-center space-x-2">
+                             <button onclick="updateQuantity('${test.id}', -1)" class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 flex items-center justify-center focus:outline-none transition-colors">
+                                <i class="fa-solid fa-minus text-xs"></i>
+                             </button>
+                             <span id="qty-${test.id}" class="w-8 text-center font-semibold text-gray-800">${quantity}</span>
+                             <button onclick="updateQuantity('${test.id}', 1)" class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 flex items-center justify-center focus:outline-none transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                             </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function updateQuantity(id, delta) {
+            let currentQty = cart.get(id) || 0;
+            let newQty = currentQty + delta;
+
+            if (newQty < 0) newQty = 0;
+
+            if (newQty === 0) {
+                cart.delete(id);
+                const card = document.getElementById(`card-${id}`);
+                if (card) card.classList.remove('ring-2', 'ring-blue-500');
+            } else {
+                cart.set(id, newQty);
+                const card = document.getElementById(`card-${id}`);
+                if (card) card.classList.add('ring-2', 'ring-blue-500');
+            }
+
+            const qtyDisplay = document.getElementById(`qty-${id}`);
+            if (qtyDisplay) qtyDisplay.innerText = newQty;
+
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if (!container || !totalEl || !submitBtn) return;
+
+            container.innerHTML = '';
+            let total = 0;
+
+            if (cart.size === 0) {
+                container.innerHTML = '<p class="text-gray-400 text-center italic mt-10">No tests selected yet.</p>';
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-50');
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50');
+
+                cart.forEach((qty, id) => {
+                    const test = catalogData.find(t => t.id === id);
+                    if (test) {
+                        const itemTotal = qty * PRICE_PER_TEST;
+                        total += itemTotal;
+
+                        const item = document.createElement('div');
+                        item.className = 'flex justify-between items-center bg-white p-2 rounded border border-gray-200 shadow-sm text-sm';
+                        item.innerHTML = `
+                            <div class="flex flex-col">
+                                <span class="font-medium text-gray-700">${test.name}</span>
+                                <span class="text-xs text-gray-500">Qty: ${qty} x $${PRICE_PER_TEST.toFixed(2)}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-gray-700 font-semibold mr-3">$${itemTotal.toFixed(2)}</span>
+                                <button onclick="removeFromCart('${id}')" class="text-red-400 hover:text-red-600">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        `;
+                        container.appendChild(item);
+                    }
+                });
+            }
+
+            totalEl.innerText = `US$${total.toFixed(2)}`;
+        }
+
+        function removeFromCart(id) {
+            cart.delete(id);
+            const qtyDisplay = document.getElementById(`qty-${id}`);
+            if (qtyDisplay) qtyDisplay.innerText = '0';
+            const card = document.getElementById(`card-${id}`);
+            if (card) card.classList.remove('ring-2', 'ring-blue-500');
+            updateCartUI();
+        }
+
+        function clearCart() {
+            cart.clear();
+            document.querySelectorAll('[id^="qty-"]').forEach(el => el.innerText = '0');
+            document.querySelectorAll('.test-card').forEach(card => card.classList.remove('ring-2', 'ring-blue-500'));
+            const form = document.getElementById('order-form');
+            if (form) form.reset();
+            updateCartUI();
+        }
+
+        async function sendOrder(e) {
+            e.preventDefault();
+            const form = document.getElementById('order-form');
+            const name = document.getElementById('client-name').value;
+            const company = document.getElementById('client-company').value;
+            const email = document.getElementById('client-email').value;
+            const statusEl = document.getElementById('form-status');
+            const submitBtn = document.getElementById('submit-btn');
+            const messageArea = document.getElementById('order-message');
+
+            if (cart.size === 0) {
+                alert("Please select at least one test.");
+                return;
+            }
+
+            let itemsList = "";
+            let total = 0;
+            cart.forEach((qty, id) => {
+                const test = catalogData.find(t => t.id === id);
+                if (test) {
+                    const itemTotal = qty * PRICE_PER_TEST;
+                    itemsList += `- ${test.name} (x${qty}) - US$${itemTotal.toFixed(2)}\n`;
+                    total += itemTotal;
+                }
+            });
+
+            const humanMessage = `New Test Order Request\n\n` +
+                `Client: ${name}\n` +
+                `Company: ${company}\n` +
+                `Email: ${email}\n\n` +
+                `ORDER DETAILS:\n${itemsList}\n` +
+                `---------------------------\n` +
+                `TOTAL: US$${total.toFixed(2)}\n\n` +
+                `Sent from the web catalog (EN).`;
+
+            messageArea.value = humanMessage;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+            statusEl.className = "hidden text-center p-3 rounded-lg text-sm font-medium";
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("https://formspree.io/f/xregrvkp", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    statusEl.innerText = "Order sent successfully! We will contact you soon.";
+                    statusEl.className = "block text-center p-3 rounded-lg text-sm font-medium bg-green-100 text-green-700 mt-4";
+                    submitBtn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Sent';
+                    submitBtn.classList.replace('bg-blue-600', 'bg-green-600');
+                    clearCart();
+
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i> Submit Request';
+                        submitBtn.classList.replace('bg-green-600', 'bg-blue-600');
+                        submitBtn.disabled = true;
+                    }, 3000);
+
+                } else {
+                    const errorMsg = await response.json();
+                    throw new Error(errorMsg.error || "Server error");
+                }
+            } catch (error) {
+                console.error("Submission error:", error);
+                statusEl.innerText = "There was an error sending your request. Please try again.";
+                statusEl.className = "block text-center p-3 rounded-lg text-sm font-medium bg-red-100 text-red-700 mt-4";
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i> Submit Request';
+            }
+        }
+    </script>
+</body>
+
+</html>

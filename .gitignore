@@ -1,0 +1,15 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Agent/AI metadata
+.gemini/
+.agent/
+antigravity/
+
+# Artifacts
+task.md
+implementation_plan.md
+walkthrough.md
+task_deploy.md
+deployment_plan.md

@@ -190,6 +190,51 @@ header {
   gap: 20px;
 }
 
+.services-grid-home {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.services-grid-home .service-card {
+  padding: 35px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.services-grid-home .service-card h3 {
+  font-size: 1.15rem;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.services-grid-home .service-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+  .services-grid-home {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .services-grid-home {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .services-grid-home {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
 .service-card {
   background: var(--white);
   padding: 30px;
